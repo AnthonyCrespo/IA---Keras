@@ -44,8 +44,11 @@ def main():
         y_true = valid_df[target_class]
         y_scores = yhat[:, i]
         # print out y_scores
+        
         for y_score in y_scores:
-            print(y_score)
+            #print(y_score)
+            pass
+        
         roc_score = roc_auc_score(y_true, y_scores)
         #prc_score = average_precision_score(y_true, y_scores)
         #print(target_class, roc_score, prc_score)
