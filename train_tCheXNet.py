@@ -1,9 +1,9 @@
 
 from chexnet import get_chexnet_model
 from keras.layers import Input, Dense, Dropout
-from keras.utils import print_summary
+#from keras.utils import print_summary
 from keras.models import Model
-from keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 import os
 import pandas as pd
@@ -32,7 +32,7 @@ def get_model():
     # get base model, model
     base_model, chexnet_model = get_chexnet_model()
     # print a model summary
-    # print_summary(base_model)
+    # model.summary()
 
     x = base_model.output
     # Dropout layer

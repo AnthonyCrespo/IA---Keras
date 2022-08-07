@@ -2,7 +2,7 @@ from keras.applications.densenet import DenseNet121
 from keras.applications.densenet import preprocess_input
 from keras.layers import Dense, Input
 from keras.models import Model, load_model
-from keras.utils import print_summary
+#from keras.utils import print_summary
 
 # chexNet weights
 # https://github.com/brucechou1983/CheXNet-Keras
@@ -93,4 +93,4 @@ if __name__ == '__main__':
     # get model
     base_model, model = get_chexnet_model()
     # print a model summary
-    print_summary(model)
+    model.summary()

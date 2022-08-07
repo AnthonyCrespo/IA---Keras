@@ -26,7 +26,7 @@ def main():
     model.load_weights(model_path)
 
     # take a look
-    model.summary()
+    #model.summary()
 
     # load data from csv
     csv_file_path = 'chexpert/valid_frontal_6_classes.csv'
