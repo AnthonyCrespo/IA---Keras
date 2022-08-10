@@ -14,7 +14,7 @@ from test_CheXNet import target_classes
 # For Mac users
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
-def get_class_weight(csv_file_path, target_class):
+""" def get_class_weight(csv_file_path, target_class):
     df = pd.read_csv(csv_file_path)
     total_counts = df.shape[0]
     class_weight = []
@@ -25,7 +25,24 @@ def get_class_weight(csv_file_path, target_class):
         class_weight.append(weight_dict)
 
     #print(class_weight)
-    return class_weight
+    return class_weight """
+def get_class_weight(csv_file_path, target_class):
+    df = pd.read_csv(csv_file_path)
+    total_counts = df.shape[0]
+    class_weight = []
+    for target_class in target_classes:
+        #weight_dict = {}
+        #weight_dict[0] = df.loc[(df[target_class] == 0)].shape[0] / total_counts
+        #weight_dict[1] = df.loc[(df[target_class] == 1)].shape[0] / total_counts
+        #class_weight.append(weight_dict)
+        class_weight.append(df.loc[(df[target_class] == 0)].shape[0] / total_counts) 
+        class_weight.append(df.loc[(df[target_class] == 1)].shape[0] / total_counts)
+    
+    #weights = np.ones(10)
+    class_weights_dict = {key:val for key, val in enumerate(class_weight)}
+
+    #print(class_weight)
+    return class_weights_dict
 
 
 def get_model():
