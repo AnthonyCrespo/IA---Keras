@@ -55,7 +55,13 @@ def get_model():
     # Dropout layer
     #x = Dropout(0.2)(x)
     # one more layer (relu)
+    
+    
+    
     x = Dense(512, activation='relu')(x)
+    
+    
+    
     # Dropout layer
     #x = Dropout(0.2)(x)
     #x = Dense(256, activation='relu')(x)
@@ -99,7 +105,7 @@ def get_model():
 
 def main():
     batch_size = 16
-    epochs = 50
+    epochs = 10
 
     save_dir = os.path.join(
         os.getcwd(),
@@ -109,6 +115,7 @@ def main():
         os.makedirs(save_dir)
 
     filepath = "saved_models/94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
+    filepath = "saved_models/new_traning_{epoch:03d}_{val_loss:.5f}.h5"
     checkpoint = ModelCheckpoint(
         filepath,
         monitor='val_loss',
@@ -120,6 +127,8 @@ def main():
 
     #new_model_name = '94482_23620_keras_chexpert_pretrained_chexnet_512_6_epochs_1.h5'
 
+    new_model_name = 'nuevo_modelo.h5'
+    
     base_model, model = get_model()
 
     # load old weights
@@ -131,6 +140,10 @@ def main():
     # print_summary(model)
 
     csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    #csv_file_path = 'chexpert/train_consolidation.csv'
+    
+    
+    
     #train_df = pd.read_csv(csv_file_path)
 
     class_weight = get_class_weight(
@@ -144,6 +157,7 @@ def main():
         batch_size=batch_size)
 
     csv_file_path = 'chexpert/train_23620_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    #csv_file_path = 'chexpert/validation_consolidation.csv'
     #valid_df = pd.read_csv(csv_file_path)
 
     valid_generator = AugmentedImageSequence(
@@ -167,9 +181,9 @@ def main():
     # Save model and weights
     # if not os.path.isdir(save_dir):
     #    os.makedirs(save_dir)
-    #model_path = os.path.join(save_dir, new_model_name)
-    # model.save(model_path)
-    #print('Saved trained model at %s ' % model_path)
+    model_path = os.path.join(save_dir, new_model_name)
+    model.save(model_path)
+    print('Saved trained model at %s ' % model_path)
 
 
 if __name__ == '__main__':

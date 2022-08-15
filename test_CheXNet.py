@@ -9,10 +9,10 @@ import pandas as pd
 target_classes = [
     # 'Cardiomegaly',
     # 'Edema',
-    # 'Consolidation',
+     'Consolidation'
     # 'Pneumonia',
     # 'Atelectasis',
-    'Pneumothorax'
+    #'Pneumothorax'
 ]
 
 
