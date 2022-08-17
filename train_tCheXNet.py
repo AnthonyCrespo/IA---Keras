@@ -80,8 +80,9 @@ def get_model():
 
     # first: train only the top layers (which were randomly initialized)
     # i.e. freeze all base_model layers
-    for layer in base_model.layers:
-        layer.trainable = False
+    
+    #for layer in base_model.layers:
+    #    layer.trainable = False
 
     # initiate an Adam optimizer
     opt = Adam(
@@ -100,6 +101,8 @@ def get_model():
         metrics=['accuracy']
     )
 
+    
+    model.load_weights("saved_models/new_traning_002_0.37178.h5")
     return base_model, model
 
 
@@ -115,7 +118,8 @@ def main():
         os.makedirs(save_dir)
 
     filepath = "saved_models/94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
-    filepath = "saved_models/new_traning_{epoch:03d}_{val_loss:.5f}.h5"
+    filepath = "../saved_models/new_traning_{epoch:03d}_{val_loss:.5f}.h5"
+    filepath = "../drive/Shareddrives/Universidad/complete/complete_training_{epoch:03d}_{val_loss:.5f}.h5"
     checkpoint = ModelCheckpoint(
         filepath,
         monitor='val_loss',
