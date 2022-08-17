@@ -84,6 +84,7 @@ def get_model():
     #for layer in base_model.layers:
     #    layer.trainable = False
 
+    base_model.trainable = True
     # initiate an Adam optimizer
     opt = Adam(
         lr=0.001,
@@ -94,15 +95,16 @@ def get_model():
         amsgrad=False
     )
 
+    
+    #model.load_weights("saved_models/new_traning_002_0.37178.h5")
+    
     # Let's train the model using Adam
     model.compile(
         loss='binary_crossentropy',
         optimizer=opt,
         metrics=['accuracy']
     )
-
     
-    model.load_weights("saved_models/new_traning_002_0.37178.h5")
     return base_model, model
 
 
