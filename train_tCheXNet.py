@@ -119,7 +119,7 @@ def main():
 
     filepath = "saved_models/94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
     filepath = "../saved_models/new_traning_{epoch:03d}_{val_loss:.5f}.h5"
-    filepath = "../drive/Shareddrives/Universidad/complete/complete_training_{epoch:03d}_{val_loss:.5f}.h5"
+    filepath = "/content/drive/Shareddrives/Universidad/complete/complete_training_{epoch:03d}_{val_loss:.5f}.h5"
     checkpoint = ModelCheckpoint(
         filepath,
         monitor='val_loss',
