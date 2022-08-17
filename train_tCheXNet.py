@@ -187,7 +187,9 @@ def main():
     #    os.makedirs(save_dir)
     model_path = os.path.join(save_dir, new_model_name)
     model.save(model_path)
-    print('Saved trained model at %s ' % model_path)
+    
+    p = "/content/drive/Shareddrives/Universidad/complete/"+new_model_name
+    print('Saved trained model at %s ' % p)
 
 
 if __name__ == '__main__':
